@@ -1,0 +1,160 @@
+:root {
+    --ucr-blue: #00abe1;
+    --ucr-purple: #6a2a8b;
+    --ucr-yellow: #eeb84a;
+    --white: #ffffff;
+    --black: #1a1a1a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.side-nav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+.btn-nav {
+    display: block;
+    padding: 15px 25px;
+    background-color: var(--ucr-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.btn-nav:hover {
+    transform: scale(1.05);
+    background-color: var(--ucr-purple);
+}
+
+.poster-container {
+    width: 450px;
+    height: 900px;
+    background-color: var(--ucr-yellow);
+    display: grid;
+    grid-template-rows: auto auto 1fr auto; 
+    padding: 40px 0 20px 0;
+    position: relative;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+.poster-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.badge {
+    padding: 5px 20px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: white;
+    transform: rotate(-3deg);
+}
+
+.badge-blue { background-color: var(--ucr-blue); margin-right: 40px; }
+.badge-white { 
+    background-color: var(--white); 
+    color: var(--ucr-yellow); 
+    font-size: 1.2rem;
+    margin-right: 60px;
+}
+.badge-purple { background-color: var(--ucr-purple); margin-left: 20px; }
+
+.poster-content {
+    text-align: center;
+    color: var(--ucr-purple);
+    padding: 0 20px;
+}
+
+.main-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+.sub-title {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.qr-section {
+    margin-top: 10px;
+    font-size: 0.8rem;
+}
+
+.qr-placeholder img {
+    width: 80px;
+    margin-top: 10px;
+}
+
+.poster-visual {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 380px;
+    overflow: hidden;
+}
+
+.student-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    mask-image: linear-gradient(to top, black 80%, transparent 100%);
+}
+
+.poster-footer {
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding: 15px 20px 0 20px;
+}
+
+.logo-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-main { height: 30px; }
+
+.divider {
+    width: 1px;
+    height: 30px;
+    background-color: var(--ucr-purple);
+}
+
+.logo-text {
+    font-size: 0.6rem;
+    font-weight: bold;
+    width: 80px;
+}
+
+.logo-sub {
+    font-size: 0.6rem;
+}
