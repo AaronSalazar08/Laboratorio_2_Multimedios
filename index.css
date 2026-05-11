@@ -1,9 +1,7 @@
 :root {
-    --ucr-blue: #00abe1;
+    --ucr-blue:   #00abe1;
     --ucr-purple: #6a2a8b;
     --ucr-yellow: #eeb84a;
-    --white: #ffffff;
-    --black: #1a1a1a;
 }
 
 * {
@@ -14,147 +12,93 @@
 }
 
 body {
-    background-color: #f0f0f0;
+    background: linear-gradient(135deg, #003865 0%, #005696 100%);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-.side-nav {
-    position: fixed;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-}
+/* ── Contenedor principal ──────────────────────────────────────── */
 
-.btn-nav {
-    display: block;
-    padding: 15px 25px;
-    background-color: var(--ucr-blue);
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s ease;
-}
-
-.btn-nav:hover {
-    transform: scale(1.05);
-    background-color: var(--ucr-purple);
-}
-
-.poster-container {
-    width: 450px;
-    height: 900px;
-    background-color: var(--ucr-yellow);
-    display: grid;
-    grid-template-rows: auto auto 1fr auto; 
-    padding: 40px 0 20px 0;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    overflow: hidden;
-}
-
-.poster-header {
+.menu-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
-    margin-bottom: 30px;
-    padding: 0 20px;
+    gap: 48px;
+    padding: 40px 20px;
 }
 
-.badge {
-    padding: 5px 20px;
-    font-weight: 900;
-    font-size: 1.8rem;
-    color: white;
-    transform: rotate(-3deg);
-}
+/* ── Cabecera ──────────────────────────────────────────────────── */
 
-.badge-blue { background-color: var(--ucr-blue); margin-right: 40px; }
-.badge-white { 
-    background-color: var(--white); 
-    color: var(--ucr-yellow); 
-    font-size: 1.2rem;
-    margin-right: 60px;
-}
-.badge-purple { background-color: var(--ucr-purple); margin-left: 20px; }
-
-.poster-content {
+.menu-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
     text-align: center;
-    color: var(--ucr-purple);
-    padding: 0 20px;
 }
 
-.main-title {
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 5px;
+.menu-logo {
+    height: 64px;
+    filter: brightness(0) invert(1);
 }
 
-.sub-title {
-    font-size: 2rem;
+.menu-title {
+    font-size: 1.8rem;
     font-weight: 900;
+    letter-spacing: 0.02em;
+}
+
+.menu-subtitle {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
 }
 
-.qr-section {
-    margin-top: 10px;
-    font-size: 0.8rem;
-}
+/* ── Navegación ────────────────────────────────────────────────── */
 
-.qr-placeholder img {
-    width: 80px;
-    margin-top: 10px;
-}
-
-.poster-visual {
+.menu-nav {
     display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: flex-end;
-    height: 380px;
-    overflow: hidden;
 }
 
-.student-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center bottom;
-    mask-image: linear-gradient(to top, black 80%, transparent 100%);
-}
-
-.poster-footer {
-    border-top: 1px solid rgba(0,0,0,0.1);
-    padding: 15px 20px 0 20px;
-}
-
-.logo-group {
+.menu-card {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    width: 160px;
+    padding: 32px 20px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
-.logo-main { height: 30px; }
-
-.divider {
-    width: 1px;
-    height: 30px;
-    background-color: var(--ucr-purple);
+.menu-card:hover {
+    transform: translateY(-6px);
+    background-color: rgba(255, 255, 255, 0.18);
 }
 
-.logo-text {
-    font-size: 0.6rem;
-    font-weight: bold;
-    width: 80px;
+.menu-icon {
+    font-size: 2.4rem;
 }
 
-.logo-sub {
-    font-size: 0.6rem;
+.menu-label {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.menu-desc {
+    font-size: 0.75rem;
+    opacity: 0.65;
+    text-align: center;
 }
