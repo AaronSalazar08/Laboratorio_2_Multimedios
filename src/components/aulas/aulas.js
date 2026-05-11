@@ -1,3 +1,4 @@
+
 const ITEMS = [
   'Aulas 5, 6, 7',
   'Apoyo Informático',
@@ -17,6 +18,8 @@ TEMPLATE.innerHTML = `
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* ── Tarjeta ──────────────────────────────────────────────── */
+
     .card {
       background: linear-gradient(180deg, #003865 0%, #005696 100%);
       width: 90%;
@@ -32,56 +35,60 @@ TEMPLATE.innerHTML = `
       to   { transform: translateY(0);     opacity: 1; }
     }
 
-    @scope (.card) {
-      .btn-back {
-        display: inline-block;
-        padding: 10px 14px;
-        color: #87ceeb;
-        text-decoration: none;
-        font-size: 0.8rem;
-        transition: color 0.2s;
-      }
+    /* ── Navegación ───────────────────────────────────────────── */
 
-      .btn-back:hover { color: #ffffff; }
+    .btn-back {
+      display: inline-block;
+      padding: 10px 14px;
+      color: #87ceeb;
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
 
-      .list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
+    .btn-back:hover { color: #ffffff; }
 
-      .list-item {
-        padding: 25px 30px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1.2rem;
-        font-weight: bold;
-        color: #ffffff;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
+    /* ── Lista ────────────────────────────────────────────────── */
 
-      .list-item:hover { background: rgba(255, 255, 255, 0.1); }
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-      .list-item:hover .arrow {
-        transform: translateX(10px);
-        color: #f1b434;
-      }
+    .list-item {
+      padding: 25px 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
 
-      .arrow { transition: transform 0.3s, color 0.3s; }
+    .list-item:hover { background: rgba(255, 255, 255, 0.1); }
 
-      .footer {
-        background: #cccccc;
-        padding: 20px;
-        text-align: center;
-      }
+    .list-item:hover .arrow {
+      transform: translateX(10px);
+      color: #f1b434;
+    }
 
-      .logo {
-        height: 35px;
-        filter: brightness(0.2);
-      }
+    .arrow { transition: transform 0.3s, color 0.3s; }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+
+    .footer {
+      background: #cccccc;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      height: 35px;
+      filter: brightness(0.2);
     }
   </style>
 
@@ -108,20 +115,35 @@ class UcrAulas extends HTMLElement {
     this.#renderItems();
   }
 
+  /** @type {HTMLAnchorElement} */
   #backLinkEl;
+  /** @type {HTMLUListElement} */
   #listEl;
 
+  // ── Atributo HTML: back-href (String) ────────────────────────────────────
+
+  /** @returns {string} */
   get backHref() {
     return this.getAttribute('back-href') ?? '/index.html';
   }
 
+  /** @param {string} value */
   set backHref(value) {
     this.setAttribute('back-href', String(value));
   }
 
+  // ── Propiedad JS: itemCount (Number, solo lectura) ───────────────────────
+
+  /**
+   * Cantidad de ítems en el directorio.
+   * Solo lectura — se deriva del array ITEMS, no se puede asignar.
+   * @returns {number}
+   */
   get itemCount() {
-    return ITEMS.length;
+    return ITEMS.length; // Number, no String
   }
+
+  // ── Lifecycle ────────────────────────────────────────────────────────────
 
   connectedCallback() {
     this.#backLinkEl.href = this.backHref;
@@ -130,6 +152,8 @@ class UcrAulas extends HTMLElement {
   attributeChangedCallback(name, _old, next) {
     if (name === 'back-href') this.#backLinkEl.href = next ?? '/index.html';
   }
+
+  // ── Privado ──────────────────────────────────────────────────────────────
 
   #renderItems() {
     this.#listEl.innerHTML = ITEMS.map(label => `
